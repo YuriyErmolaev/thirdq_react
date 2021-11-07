@@ -28,16 +28,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../Projects/SelfProjects/evolimp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/myreactapp/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Learn\GeekBrains\Frontend_developer\thirdq_react\1\first_lesson\myreactapp\src" />
+      <recent name="C:\Learn\GeekBrains\Frontend_developer\thirdq_react\1\first_lesson\myreactapp\src\components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Learn\GeekBrains\Frontend_developer\thirdq_react\1\first_lesson\myreactapp\src\styles" />
+      <recent name="C:\Learn\GeekBrains\Frontend_developer\thirdq_react\1\first_lesson\myreactapp\src" />
       <recent name="C:\Learn\GeekBrains\Frontend_developer\thirdq_react\1\first_lesson\myreactapp\src\components\Message" />
     </key>
   </component>
@@ -50,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635772485256</updated>
       <workItem from="1635772486600" duration="1218000" />
-      <workItem from="1636086589793" duration="4899000" />
+      <workItem from="1636086589793" duration="8040000" />
     </task>
     <servers />
   </component>
