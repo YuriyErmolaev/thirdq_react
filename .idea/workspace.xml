@@ -11,6 +11,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -35,6 +36,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Learn\GeekBrains\Frontend_developer\thirdq_react\1\first_lesson\myreactapp\src\components\Message" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,7 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635772485256</updated>
       <workItem from="1635772486600" duration="1218000" />
-      <workItem from="1636086589793" duration="2411000" />
+      <workItem from="1636086589793" duration="4899000" />
     </task>
     <servers />
   </component>
