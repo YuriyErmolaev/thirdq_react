@@ -7,7 +7,10 @@ export const MessageForm = ({ addMessageTolist }) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        addMessageTolist(value);
+        addMessageTolist({
+            text: value,
+            author: 'Yuriy'
+        });
     }
     return (
         <form onSubmit={handleSubmit}>

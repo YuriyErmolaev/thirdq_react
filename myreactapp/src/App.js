@@ -16,7 +16,7 @@ function App() {
                 <ul>
                     {messageList.map((message, i) => (
                         <li key={i}>
-                            {message}
+                            {message.text}
                         </li>
                     ))}
                 </ul>
