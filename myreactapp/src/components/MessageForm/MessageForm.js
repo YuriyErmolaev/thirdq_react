@@ -15,7 +15,7 @@ export const MessageForm = ({ addMessageTolist }) => {
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" value={value} onChange={handleChange} name='message' />
-            <button type={"submit"}>Add message</button>
+            <button className={'button-84'} type={"submit"}>Add message</button>
         </form>
     )
 }
