@@ -1,22 +1,45 @@
 import './App.css';
 import './styles/App.sass';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {MessageForm} from "./components/MessageForm/MessageForm";
 
 function App() {
 
+    const [newmessage, setNewmessage] = useState('');
     const [messageList, setMessageList] = useState([]);
     const addMessageTolist = (message) => { // the callback
+        setNewmessage( message );
         setMessageList([ ...messageList, message ]);
     };
+    const botName = 'Bot';
+
+    useEffect(() => {
+        if(newmessage && newmessage.author !== botName){
+            const newBotMessageText = 'Thank you! Your message is accepted! )';
+            const newBotMessage = {
+              author: botName,
+              text: newBotMessageText
+            };
+            const addBotMessage = () => {
+                setNewmessage( newBotMessage );
+                setMessageList([ ...messageList, newBotMessage ]);
+            }
+            setTimeout(addBotMessage, 1500);
+        }
+    }, [newmessage]);
 
     return (
         <div className="App">
             <header className="App-header">
                 <ul>
                     {messageList.map((message, i) => (
-                        <li key={i}>
-                            {message.text}
+                        <li className={'messageItem'} key={i}>
+                            <h5 className={'author'}>
+                                {message.author}:
+                            </h5>
+                            <p className={'text'}>
+                                {message.text}
+                            </p>
                         </li>
                     ))}
                 </ul>
