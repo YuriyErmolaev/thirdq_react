@@ -3,7 +3,7 @@ import './styles/App.sass';
 import React, { useEffect, useState } from "react";
 import {MessageForm} from "./components/MessageForm/MessageForm";
 import { v4 as uuidv4 } from 'uuid';
-import { Grid } from '@mui/material';
+import {Grid, List, ListItem} from '@mui/material';
 
 function App() {
 
@@ -41,18 +41,17 @@ function App() {
 
     return (
         <div className="App container">
-            <header className="App-header">
                 <Grid container spacing={2}>
                     <Grid item xs={4}>
-                        <ul>
+                        <List>
                             {chatsList.map((chat, i) => (
-                                <li className={'chatItem'} key={chat.id}>
+                                <ListItem key={chat.id}>
                                     <h5 className={'chatName'}>
                                         {chat.name}
                                     </h5>
-                                </li>
+                                </ListItem>
                             ))}
-                        </ul>
+                        </List>
                     </Grid>
                     <Grid item xs={8}>
                         <ul>
@@ -80,7 +79,6 @@ function App() {
                         </a>
                     </Grid>
                 </Grid>
-            </header>
         </div>
     );
 
