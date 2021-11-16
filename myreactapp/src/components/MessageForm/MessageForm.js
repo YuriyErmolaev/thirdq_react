@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import {Input, TextField} from '@mui/material';
 import { Button } from '@mui/material';
-import { LoadingButton } from '@mui/lab'
+import { LoadingButton } from '@mui/lab';
+import { v4 as uuidv4 } from 'uuid';
 
 export const MessageForm = ({ addMessageTolist }) => {
     const tfRef = useRef();
@@ -11,7 +12,9 @@ export const MessageForm = ({ addMessageTolist }) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        const uiid = uuidv4();
         addMessageTolist({
+            id: uiid,
             text: value,
             author: 'Yuriy'
         });

@@ -2,6 +2,7 @@ import './App.css';
 import './styles/App.sass';
 import React, { useEffect, useState } from "react";
 import {MessageForm} from "./components/MessageForm/MessageForm";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
@@ -16,9 +17,11 @@ function App() {
     useEffect(() => {
         if(newmessage && newmessage.author !== botName){
             const newBotMessageText = 'Thank you! Your message is accepted! )';
+            const uiid = uuidv4();
             const newBotMessage = {
-              author: botName,
-              text: newBotMessageText
+                id: uiid,
+                author: botName,
+                text: newBotMessageText
             };
             const addBotMessage = () => {
                 setNewmessage( newBotMessage );
@@ -33,7 +36,7 @@ function App() {
             <header className="App-header">
                 <ul>
                     {messageList.map((message, i) => (
-                        <li className={'messageItem'} key={i}>
+                        <li className={'messageItem'} key={message.id}>
                             <h5 className={'author'}>
                                 {message.author}:
                             </h5>
