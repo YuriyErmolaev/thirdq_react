@@ -3,8 +3,9 @@ import {TextField} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { v4 as uuidv4 } from 'uuid';
 
-export const MessageForm = ({ addMessageTolist }) => {
-    const tfRef = useRef();
+export const MessageForm = ({ addNewMessage, chatExist }) => {
+
+    const inputRef = useRef();
     const [value, setValue] = useState('');
     const handleChange = (e) => {
         setValue(e.target.value);
@@ -12,7 +13,7 @@ export const MessageForm = ({ addMessageTolist }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const uiid = uuidv4();
-        addMessageTolist({
+        addNewMessage({
             id: uiid,
             text: value,
             author: 'Yuriy'
@@ -20,15 +21,16 @@ export const MessageForm = ({ addMessageTolist }) => {
     }
 
     useEffect(() => {
-        const tf = tfRef.current,
-            input = tf.getElementsByTagName('input')[0];
-        input.focus();
-    }, [tfRef.current]);
+        const tfInput = inputRef.current;
+        if(tfInput) tfInput.focus();
+    }, [inputRef.current]);
+
+    if(!chatExist) return null;
 
     return (
         <form onSubmit={handleSubmit}>
             <TextField
-                ref={tfRef}
+                inputRef={inputRef}
                 value={value}
                 onChange={handleChange}
                 name='message'
