@@ -1,19 +1,20 @@
 import './App.css';
 import './styles/App.sass';
-import React, { useEffect, useState } from "react";
 import Chats from "./components/Chats";
-import {Grid, List, ListItem, MenuItem} from '@mui/material';
+import {MenuItem} from '@mui/material';
 import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
 import Profile from "./components/Profile"
 import Home from "./components/Home";
+import {Provider} from "react-redux";
+import {store} from "./store";
 
 function App() {
     return(
         <BrowserRouter>
+            <Provider store={store}>
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <div className="container">
@@ -39,6 +40,7 @@ function App() {
                     <Route path={"/profile"} element={<Profile />} />
                 </Routes>
             </div>
+            </Provider>
         </BrowserRouter>
     )
 }
