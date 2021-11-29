@@ -15,31 +15,31 @@ function App() {
     return(
         <BrowserRouter>
             <Provider store={store}>
-            <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
-                    <div className="container">
-                        <Toolbar>
-                            <Link to={"/"} style={{ textDecoration: 'none' }}>
-                                <MenuItem>Home</MenuItem>
-                            </Link>
-                            <Link to={"/chats"} style={{ textDecoration: 'none' }}>
-                                <MenuItem>Chats</MenuItem>
-                            </Link>
-                            <Link to={"/profile"} style={{ textDecoration: 'none' }}>
-                                <MenuItem>Profile</MenuItem>
-                            </Link>
-                        </Toolbar>
-                    </div>
-                </AppBar>
-            </Box>
-            <div className="App container">
-                <Routes>
-                    <Route path={"/"} element={<Home />} />
-                    <Route path={"/chats"} element={<Chats />} />
-                    <Route path="/chats/:chatId" element={<Chats />} />
-                    <Route path={"/profile"} element={<Profile />} />
-                </Routes>
-            </div>
+                <Box sx={{ flexGrow: 1 }}>
+                    <AppBar position="static">
+                        <div className="container">
+                            <Toolbar>
+                                <Link to={"/"} style={{ textDecoration: 'none' }}>
+                                    <MenuItem>Home</MenuItem>
+                                </Link>
+                                <Link to={"/chats"} style={{ textDecoration: 'none' }}>
+                                    <MenuItem>Chats</MenuItem>
+                                </Link>
+                                <Link to={"/profile"} style={{ textDecoration: 'none' }}>
+                                    <MenuItem>Profile</MenuItem>
+                                </Link>
+                            </Toolbar>
+                        </div>
+                    </AppBar>
+                </Box>
+                <div className="App container">
+                    <Routes>
+                        <Route path={"/"} element={<Home />} />
+                        <Route path={"/chats"} element={<Chats />} />
+                        <Route path="/chats/:chatId" element={<Chats />} />
+                        <Route path={"/profile"} element={<Profile />} />
+                    </Routes>
+                </div>
             </Provider>
         </BrowserRouter>
     )
