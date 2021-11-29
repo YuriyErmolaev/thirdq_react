@@ -1,6 +1,6 @@
 import {useSelector, useDispatch, shallowEqual} from "react-redux";
 import {toggleCheckbox} from "../../store/Profile/actions";
-import {getCheckbox, getName} from "../../store/ChatsList/selectors";
+import {getCheckbox, getName} from "../../store/Profile/selectors";
 
 export const Profile = () => {
 
