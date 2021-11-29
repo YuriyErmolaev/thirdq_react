@@ -14,15 +14,33 @@ export const MessageForm = ({ chatExist, chatId }) => {
     const handleChange = (e) => {
         messageInput = e.target.value;
     }
+
+    const botName = 'Bot';
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const uiid = uuidv4();
+        let uiid;
+        //add user message
+        uiid = uuidv4();
         const message = {
                 id: uiid,
                 text: messageInput,
                 author: 'Yuriy'
             };
         dispatch(addMessage(chatId, message));
+        //add bot message
+        uiid = uuidv4();
+        const newBotMessageText = 'Thank you! Your message is accepted! )';
+        const newBotMessage = {
+            id: uiid,
+            author: botName,
+            text: newBotMessageText
+        };
+        const addBotMessage = () => {
+            dispatch(addMessage(chatId, newBotMessage));
+        }
+        setTimeout(addBotMessage, 1500);
+
     }
 
     useEffect(() => {

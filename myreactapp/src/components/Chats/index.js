@@ -12,26 +12,6 @@ import ChatForm from "../ChatForm";
 export const Chats = () => {
 
     const chatsList = useSelector(state => state.chatsList);
-    const botName = 'Bot';
-
-    // useEffect(() => {
-    //     console.log('newmessage2', newmessage);
-    //     if(newmessage && newmessage.author !== botName){
-    //         const newBotMessageText = 'Thank you! Your message is accepted! )';
-    //         const uiid = uuidv4();
-    //         const newBotMessage = {
-    //             id: uiid,
-    //             author: botName,
-    //             text: newBotMessageText
-    //         };
-    //         setNewmessage( newBotMessage );
-    //         const addBotMessage = () => {
-    //             addMessageToChatList(newBotMessage);
-    //         }
-    //         setTimeout(addBotMessage, 1500);
-    //     }
-    // }, [newmessage]);
-
     const { chatId } = useParams();
 
     return (
