@@ -1,12 +1,13 @@
 import React from "react";
 import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
 import {List, ListItem, Button} from "@mui/material";
-import {useDispatch, useSelector} from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {delChat} from "../../store/ChatsList/actions";
+import {getChatList} from "../../store/ChatsList/selectors";
 
 export const ChatList = () => {
 
-    const chatsList = useSelector(state => state.chatsList);
+    const chatsList = useSelector(getChatList, shallowEqual);
     const dispatch = useDispatch();
 
     const delChatHandler = (e) => {

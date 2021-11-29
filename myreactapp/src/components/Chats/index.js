@@ -6,12 +6,13 @@ import ChatList from "../ChatList";
 import MessageList from "../MessageList";
 import {useParams} from "react-router-dom";
 import NoChat from "../NoChat";
-import {useSelector} from "react-redux";
+import {shallowEqual, useSelector} from "react-redux";
 import ChatForm from "../ChatForm";
+import {getChatList} from "../../store/ChatsList/selectors";
 
 export const Chats = () => {
 
-    const chatsList = useSelector(state => state.chatsList);
+    const chatsList = useSelector(getChatList, shallowEqual);
     const { chatId } = useParams();
 
     return (
