@@ -1,8 +1,4 @@
-export function getCheckbox(state) {
-    return state.checkbox
-}
+export const getCheckbox = (state)=> state.checkbox;
 
-export function getName(state) {
-    return state.name
-}
+export const getName = (state)=> state.name;
 
