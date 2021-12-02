@@ -1,4 +1,5 @@
 import {ADD_CHAT, ADD_MESSAGE, DEL_CHAT} from "./actions";
+import { v4 as uuidv4 } from 'uuid';
 
 const initChatsList = {
     chat1: {
@@ -24,7 +25,7 @@ export const chatReducer = (state = initChatsList, action ) => {
             return(
                 {
                     ...state,
-                    [`chat${state.length + 1}`]: {
+                    [`chat${uuidv4()}`]: {
                         name: action.name,
                         messages: []
                     }
