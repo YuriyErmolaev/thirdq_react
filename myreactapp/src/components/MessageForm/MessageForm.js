@@ -3,7 +3,7 @@ import {TextField} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { v4 as uuidv4 } from 'uuid';
 import {useDispatch} from "react-redux";
-import {addChat, addMessage} from "../../store/ChatsList/actions";
+import {addChat, addMessage, addMessageWithReply} from "../../store/ChatsList/actions";
 
 export const MessageForm = ({ chatExist, chatId }) => {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export const MessageForm = ({ chatExist, chatId }) => {
         messageInput = e.target.value;
     }
 
-    const botName = 'Bot';
+    // const botName = 'Bot';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,19 +27,7 @@ export const MessageForm = ({ chatExist, chatId }) => {
                 text: messageInput,
                 author: 'Yuriy'
             };
-        dispatch(addMessage(chatId, message));
-        //add bot message
-        uiid = uuidv4();
-        const newBotMessageText = 'Thank you! Your message is accepted! )';
-        const newBotMessage = {
-            id: uiid,
-            author: botName,
-            text: newBotMessageText
-        };
-        const addBotMessage = () => {
-            dispatch(addMessage(chatId, newBotMessage));
-        }
-        setTimeout(addBotMessage, 1500);
+        dispatch(addMessageWithReply(chatId, message));
 
     }
 
