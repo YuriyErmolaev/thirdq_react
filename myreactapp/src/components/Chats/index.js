@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import {MessageForm} from "../MessageForm/MessageForm";
-import { v4 as uuidv4 } from 'uuid';
-import {Grid, List, ListItem} from '@mui/material';
+import {Grid} from '@mui/material';
 import ChatList from "../ChatList";
 import MessageList from "../MessageList";
 import {useParams} from "react-router-dom";

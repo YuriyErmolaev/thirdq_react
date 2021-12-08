@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {TextField} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { v4 as uuidv4 } from 'uuid';
 import {useDispatch} from "react-redux";
-import {addChat, addMessage, addMessageWithReply} from "../../store/ChatsList/actions";
+import {addMessageWithReply} from "../../store/ChatsList/actions";
 
 export const MessageForm = ({ chatExist, chatId }) => {
     const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export const MessageForm = ({ chatExist, chatId }) => {
         if(tfInput){
             tfInput.focus();
         }
-    }, [inputRef.current]);
+    });
 
     if(!chatExist) return null;
 
