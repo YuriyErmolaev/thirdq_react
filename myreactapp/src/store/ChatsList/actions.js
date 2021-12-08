@@ -20,12 +20,9 @@ export const delChat = (chatId) => ({
     chatId
 });
 
-export const addMessageWithReply = (chatId, message) => (dispatch) => {
-    
-    dispatch(addMessage(chatId, message));    
-    
+export const addMessageWithReply = (chatId, message) => (dispatch) => {    
+    dispatch(addMessage(chatId, message));
     const botName = 'Bot';
-
     const newBotMessageText = 'Thank you! Your message is accepted! )';
     const newBotMessage = {
         id: uuidv4(),
