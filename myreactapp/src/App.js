@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import {Provider} from "react-redux";
 import {persistor, store} from "./store";
 import { PersistGate } from 'redux-persist/integration/react';
+import { ApiList } from './components/ApiList';
 
 function App() {
     return(
@@ -30,6 +31,9 @@ function App() {
                                     <Link to={"/profile"} style={{ textDecoration: 'none' }}>
                                         <MenuItem>Profile</MenuItem>
                                     </Link>
+                                    <Link to={"/apilist"} style={{ textDecoration: 'none' }}>
+                                        <MenuItem>ApiList</MenuItem>
+                                    </Link>
                                 </Toolbar>
                             </div>
                         </AppBar>
@@ -40,6 +44,7 @@ function App() {
                             <Route path={"/chats"} element={<Chats />} />
                             <Route path="/chats/:chatId" element={<Chats />} />
                             <Route path={"/profile"} element={<Profile />} />
+                            <Route path={"/apilist"} element={<ApiList />} />
                         </Routes>
                     </div>
                 </PersistGate>
