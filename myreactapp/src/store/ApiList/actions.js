@@ -18,7 +18,6 @@ export const getGistsFailure = (err) => ({
   payload: err,
 });
 
-
 export const STATUSES = {
     IDLE: 0,
     REQUEST: 1,
@@ -27,16 +26,12 @@ export const STATUSES = {
 }
 
 export const getAllGists = () => async (dispatch) => {
-    dispatch(getGistsRequest());
-  
+    dispatch(getGistsRequest());  
     try {
-      const res = await fetch(API_URL_PUBLIC);
-  
-      if (!res.ok) {
-        throw new Error(`Request failed with status ${res.status}`);
-      }
-      const result = await res.json();
-  
+      const res = await fetch(API_URL_PUBLIC);  
+      if (!res.ok) 
+        throw new Error(`Request failed with status ${res.status}`);      
+      const result = await res.json();  
       dispatch(getGistsSuccess(result));
     } catch (err) {
       dispatch(getGistsFailure(err.message));
