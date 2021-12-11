@@ -1,9 +1,13 @@
 import thunk from "redux-thunk";
 import {applyMiddleware, combineReducers, createStore, compose} from "redux";
 import {profileReducer} from "./Profile/reducer";
+
 import {chatReducer} from "./ChatsList/reducer";
+import {apiListReducer} from "./ApiList/reducer";
+
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // localStorage
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -14,7 +18,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     chatsList: chatReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    gists: apiListReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
