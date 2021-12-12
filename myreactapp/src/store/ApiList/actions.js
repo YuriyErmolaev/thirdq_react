@@ -41,6 +41,7 @@ export const getAllGists = () => async (dispatch) => {
         throw new Error(`Request failed with status ${res.status}`);      
       const result = await res.json();  
       dispatch(getGistsSuccess(result));
+      dispatch(getGistsFailure(null));
     } catch (err) {
       dispatch(getGistsFailure(err.message));
     } 
