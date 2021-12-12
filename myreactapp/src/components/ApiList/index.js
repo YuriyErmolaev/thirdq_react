@@ -17,7 +17,8 @@ export const ApiList = () => {
         
     useEffect(() => {      
       requestGists();
-    });
+    }, []);
+
      
     
     const renderGist = useCallback(

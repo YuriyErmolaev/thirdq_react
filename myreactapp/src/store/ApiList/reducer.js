@@ -1,13 +1,18 @@
-import  {STATUSES, GET_GISTS_REQUEST, GET_GISTS_SUCCESS, GET_GISTS_FAILURE} from './actions';
+import  {STATUSES, GET_GISTS_REQUEST, GET_GISTS_SUCCESS, GET_GISTS_FAILURE, GISTS_LOADING} from './actions';
 
 const initialState = {
     gists: [],
     request: STATUSES.IDLE,
-    error: null,
+    error: null
 };
   
 export const apiListReducer = (state = initialState, action) => {
     switch (action.type) {
+      case GISTS_LOADING:
+        return {
+          ...state,
+          loading: action.payload,
+        };      
       case GET_GISTS_REQUEST:
         return {
           ...state,
