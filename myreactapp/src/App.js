@@ -1,30 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
 import './styles/App.sass';
-import {Message} from "./components/Message/Message";
-
-const sendMessage = 'Hello world! )';
+import Chats from "./components/Chats";
+import {CircularProgress, MenuItem} from '@mui/material';
+import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Profile from "./components/Profile"
+import Home from "./components/Home";
+import {Provider} from "react-redux";
+import {persistor, store} from "./store";
+import { PersistGate } from 'redux-persist/integration/react';
+import { ApiList } from './components/ApiList';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Message message={sendMessage} />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return(
+        <BrowserRouter>
+            <Provider store={store}>
+                <PersistGate persistor={persistor} loading={<CircularProgress />}>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <AppBar position="static">
+                            <div className="container">
+                                <Toolbar>
+                                    <Link to={"/"} style={{ textDecoration: 'none' }}>
+                                        <MenuItem>Home</MenuItem>
+                                    </Link>
+                                    <Link to={"/chats"} style={{ textDecoration: 'none' }}>
+                                        <MenuItem>Chats</MenuItem>
+                                    </Link>
+                                    <Link to={"/profile"} style={{ textDecoration: 'none' }}>
+                                        <MenuItem>Profile</MenuItem>
+                                    </Link>
+                                    <Link to={"/apilist"} style={{ textDecoration: 'none' }}>
+                                        <MenuItem>ApiList</MenuItem>
+                                    </Link>
+                                </Toolbar>
+                            </div>
+                        </AppBar>
+                    </Box>
+                    <div className="App container">
+                        <Routes>
+                            <Route path={"/"} element={<Home />} />
+                            <Route path={"/chats"} element={<Chats />} />
+                            <Route path="/chats/:chatId" element={<Chats />} />
+                            <Route path={"/profile"} element={<Profile />} />
+                            <Route path={"/apilist"} element={<ApiList />} />
+                        </Routes>
+                    </div>
+                </PersistGate>
+            </Provider>
+        </BrowserRouter>
+    )
 }
 
 export default App;
