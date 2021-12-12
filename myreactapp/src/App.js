@@ -13,6 +13,7 @@ import {persistor, store} from "./store";
 import { PersistGate } from 'redux-persist/integration/react';
 import { ApiList } from './components/ApiList';
 import {Signup} from './components/Signup';
+import { Login } from './components/Login';
 
 function App() {
     return(
@@ -53,7 +54,7 @@ function App() {
                             <Route path={"/profile"} element={<Profile />} />
                             <Route path={"/apilist"} element={<ApiList />} />
                             <Route path={"/signup"} element={<Signup />} />
-                            <Route path={"/login"} element={<ApiList />} />
+                            <Route path={"/login"} element={<Login />} />
                         </Routes>
                     </div>
                 </PersistGate>
