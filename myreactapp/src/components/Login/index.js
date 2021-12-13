@@ -1,11 +1,14 @@
 import { Link } from "@mui/material";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { logIn } from "../../services/firebase";
+import { UpdateAuthStatus } from "../../store/Auth/actions";
 
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const dispatch = useDispatch();
   
     const handlePassChange = (e) => {
       setPassword(e.target.value);
@@ -22,6 +25,7 @@ export const Login = () => {
       try {
         // await firebase.auth().signInWithEmailAndPassword(email, password);
         logIn(email, password);
+        dispatch(UpdateAuthStatus());
       } catch (error) {
         setError(error.message);
       }

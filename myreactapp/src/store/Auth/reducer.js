@@ -1,7 +1,7 @@
 import { CHANGE_AUTH_STATUS } from "./actions";
 
 const initAUTH = {
-    authorised: false
+    authorized: false
 }
 
 export const authReduser = (state = initAUTH, action) => {
@@ -9,7 +9,7 @@ export const authReduser = (state = initAUTH, action) => {
         case CHANGE_AUTH_STATUS:
             return {
                 ...state,                
-                authorised: action.payload                
+                authorized: action.payload                
             };
         default:
             return state

@@ -10,17 +10,23 @@ import { ApiList } from '../ApiList';
 import {Signup} from '../Signup';
 import { Login } from '../Login';
 import Chats from "../Chats";
-import { useEffect, useState } from 'react';
-import { onChangeAuth } from '../../services/firebase';
+import { useEffect } from 'react';
 import PublicRoute from '../../hocs/PublicRoute';
 import PrivateRoute from '../../hocs/PrivateRoute';
 import {getAuthStatus} from '../../store/Auth/selectors';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import { UpdateAuthStatus } from "../../store/Auth/actions";
 
 
 export const RoutesComponent = () => {
 
-    const authorised = useSelector(getAuthStatus);
+    const authorized = useSelector(getAuthStatus);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(UpdateAuthStatus());
+      }, []);
+    
 
     return (        
         <BrowserRouter>
@@ -58,7 +64,10 @@ export const RoutesComponent = () => {
                         element={<Chats />} 
                     />
                     <Route path="/chats/:chatId" element={<Chats />} />
-                    <Route path={"/profile"} element={<Profile />} />
+                    <Route 
+                        path={"/profile"} 
+                        element={<Profile />} 
+                    />
                     <Route path={"/apilist"} element={<ApiList />} />
                     <Route path={"/signup"} element={<Signup />} />
                     <Route path={"/login"} element={<Login />} />
