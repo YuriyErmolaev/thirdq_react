@@ -14,8 +14,16 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { ApiList } from './components/ApiList';
 import {Signup} from './components/Signup';
 import { Login } from './components/Login';
+import { useEffect, useState } from 'react';
+import { onChangeAuth } from './services/firebase';
+import PublicRoute from './hocs/PublicRoute';
+import PrivateRoute from './hocs/PrivateRoute';
+
 
 function App() {
+
+        
+
     return(
         <BrowserRouter>
             <Provider store={store}>
@@ -48,8 +56,11 @@ function App() {
                     </Box>
                     <div className="App container">
                         <Routes>
-                            <Route path={"/"} element={<Home />} />
-                            <Route path={"/chats"} element={<Chats />} />
+                            <Route path={"/"} element={<Home />} />                            
+                            <Route                                 
+                                path={"/chats"} 
+                                element={<Chats />} 
+                            />
                             <Route path="/chats/:chatId" element={<Chats />} />
                             <Route path={"/profile"} element={<Profile />} />
                             <Route path={"/apilist"} element={<ApiList />} />

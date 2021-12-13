@@ -1,7 +1,7 @@
 // import firebase from "firebase";
 import { async } from "@firebase/util";
 import {initializeApp} from "firebase/app";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
 
 
 const config = {
@@ -23,3 +23,4 @@ export const signUp = async (email, pass) =>
 export const logIn = async (email, pass) => 
     await signInWithEmailAndPassword(auth, email, pass);
 export const logOut = async () => await signOut(auth);
+export const onChangeAuth = (callback) => onAuthStateChanged(auth, callback);

@@ -7,6 +7,7 @@ import {apiListReducer} from "./ApiList/reducer";
 
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // localStorage
+import { authReduser } from "./Auth/reducer";
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -19,7 +20,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     chatsList: chatReducer,
     profile: profileReducer,
-    gists: apiListReducer
+    gists: apiListReducer,
+    auth: authReduser
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
