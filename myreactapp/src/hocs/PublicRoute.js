@@ -1,6 +1,8 @@
-import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
+import { getAuthStatus } from "../store/Auth/selectors";
 
-export default function PublicRoute({ authenticated, ...rest }) {
-  return !authenticated ? <Route {...rest} /> : <Navigate to="/chats" />;
+export default function PublicRoute({ children }) {
+  const authorized = useSelector(getAuthStatus);
+  return !authorized ? children : <Navigate to="/chats" replace />;
 }
