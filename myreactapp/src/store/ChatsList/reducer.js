@@ -44,16 +44,16 @@ let initChatsList = {};
 //     );
 // });
 
-console.log( 'initChatsList: ', initChatsList );
+// console.log( 'initChatsList: ', initChatsList );
 
 export const chatReducer = (state = initChatsList, action ) => {
-    console.log('state from reducer', state);
+    // console.log('state from reducer', state);
     switch (action.type) {
         case ADD_CHAT:
             return(
                 {
                     ...state,
-                    [`chat${action.id}`]: {
+                    [`${action.id}`]: {
                         name: action.name,
                         messages: []
                     }

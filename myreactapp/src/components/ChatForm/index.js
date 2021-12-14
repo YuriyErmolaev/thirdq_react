@@ -12,7 +12,7 @@ export const ChatForm = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addChat(chatName, uuidv4()));
+        dispatch( addChat( uuidv4(), chatName ) );
     }
 
     return (

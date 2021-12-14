@@ -6,9 +6,9 @@ export const ADD_CHAT = 'CHATS::ADD';
 export const ADD_MESSAGE = 'CHATS::ADD_MESSAGE';
 export const DEL_CHAT = 'CHATS::DEL';
 
-export const addChat = (name, id) => ({
+export const addChat = (id, name) => ({
     type: ADD_CHAT,
-    name, id
+    id, name
 });
 
 export const addMessage = (chatId, message) => ({
@@ -38,27 +38,23 @@ export const addMessageWithReply = (chatId, message) => (dispatch) => {
 
 };
 
-export const getAllChats = () => async (dispatch) => {
+
+export const addChatWithThunk = (id, chat) => (dispatch, getState) => {    
+    dispatch( addChat(id, chat.name) );    
+    Object.keys(chat.messages).map((msgId, i) => {                
+        dispatch( addMessage(
+            id, 
+            chat.messages[msgId]
+            )
+        );
+    });
+};
+
+export const getAllChats = () => (dispatch) => {
     onValue(chatsRef, (snapshot) => {    
         snapshot.forEach(chatSnap => {            
-            
-            const chat = chatSnap.val();
-            const chatId = chatSnap.key;
-            dispatch(addChat(chat.name, chatId));
-            
-            // console.log( 'chat.name ', chat.name );        
-            
-             // error
-            //  Cannot read properties of undefined (reading 'messages') at chatReducer (reducer.js:68)   
-            // Object.keys(chat.messages).map((msgId, i) => {                
-            //     // console.log( 'chat.messages: ', chat.messages );
-            //     // console.log( 'msgId: ', msgId );
-            //     dispatch(addMessage(
-            //         chatId, 
-            //         chat.messages[msgId]
-            //     ));
-            // });
-
+            dispatch(addChatWithThunk(chatSnap.key, chatSnap.val()));
         })
     });    
 };
+
