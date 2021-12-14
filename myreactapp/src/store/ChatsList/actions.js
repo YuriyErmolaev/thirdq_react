@@ -38,8 +38,7 @@ export const addMessageWithReply = (chatId, message) => (dispatch) => {
 
 };
 
-
-export const addChatWithThunk = (id, chat) => (dispatch, getState) => {    
+export const addChatToStoreWithMessages = (id, chat) => (dispatch, getState) => {    
     dispatch( addChat(id, chat.name) );    
     Object.keys(chat.messages).map((msgId, i) => {                
         dispatch( addMessage(
@@ -53,7 +52,12 @@ export const addChatWithThunk = (id, chat) => (dispatch, getState) => {
 export const getAllChats = () => (dispatch) => {
     onValue(chatsRef, (snapshot) => {    
         snapshot.forEach(chatSnap => {            
-            dispatch(addChatWithThunk(chatSnap.key, chatSnap.val()));
+            dispatch(   
+                addChatToStoreWithMessages( 
+                    chatSnap.key, 
+                    chatSnap.val() 
+                )
+            );
         })
     });    
 };
