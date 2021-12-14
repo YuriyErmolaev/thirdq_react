@@ -2,6 +2,7 @@ import {TextField} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import {useDispatch} from "react-redux";
 import {addChat} from "../../store/ChatsList/actions";
+import { v4 as uuidv4 } from 'uuid';
 
 export const ChatForm = () => {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export const ChatForm = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addChat(chatName));
+        dispatch(addChat(chatName, uuidv4()));
     }
 
     return (

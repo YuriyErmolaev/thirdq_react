@@ -47,6 +47,6 @@ export const getAllGists = () => async (dispatch) => {
     } 
     finally {
       // dispatch(setGistsLoading(false));
-      setTimeout(()=>{dispatch(setGistsLoading(false))}, 1000);
+      setTimeout(()=>{dispatch(setGistsLoading(false))}, 200);
     }
   };

@@ -1,5 +1,3 @@
-// import firebase from "firebase";
-import { async } from "@firebase/util";
 import {initializeApp} from "firebase/app";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
 import {getDatabase, ref} from "firebase/database";
@@ -14,7 +12,6 @@ const config = {
     appId: "1:433463209425:web:1cc4300ca175350e7e04f0"
 };
 
-// firebase.initializeApp(config);
 const app = initializeApp(config);
 const auth = getAuth(app);
 
