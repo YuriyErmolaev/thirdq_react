@@ -1,6 +1,6 @@
-import { onValue } from '@firebase/database';
+import { onValue, push } from '@firebase/database';
 import { v4 as uuidv4 } from 'uuid';
-import { chatsRef } from '../../services/firebase';
+import { chatsRef, db } from '../../services/firebase';
 
 export const ADD_CHAT = 'CHATS::ADD';
 export const ADD_MESSAGE = 'CHATS::ADD_MESSAGE';
@@ -10,6 +10,14 @@ export const addChat = (id, name) => ({
     type: ADD_CHAT,
     id, name
 });
+
+export const addChatWithAddToDb = (id, name) => (dispatch) => {
+    const chat = {
+        id: id,
+        name: name
+    };        
+    push(chatsRef, chat);
+}
 
 export const addMessage = (chatId, message) => ({
     type: ADD_MESSAGE,
