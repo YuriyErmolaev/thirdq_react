@@ -58,15 +58,37 @@ export const RoutesComponent = () => {
             </Box>
             <div className="App container">
                 <Routes>
-                    <Route path={"/"} element={<Home />} />                            
+                    <Route 
+                        path={"/"} 
+                        element={
+                            <PublicRoute>
+                                <Home />
+                            </PublicRoute>
+                        } 
+                    />                            
                     <Route                                 
                         path={"/chats"} 
-                        element={<Chats />} 
+                        element={
+                            <PrivateRoute>
+                                <Chats />
+                            </PrivateRoute>
+                        } 
                     />
-                    <Route path="/chats/:chatId" element={<Chats />} />
+                    <Route 
+                        path="/chats/:chatId" 
+                        element={
+                            <PrivateRoute>
+                                <Chats />
+                            </PrivateRoute>
+                        } 
+                    />
                     <Route 
                         path={"/profile"} 
-                        element={<Profile />} 
+                        element={
+                            <PrivateRoute>
+                                <Profile />
+                            </PrivateRoute>
+                        } 
                     />
                     <Route path={"/apilist"} element={<ApiList />} />
                     <Route path={"/signup"} element={<Signup />} />
