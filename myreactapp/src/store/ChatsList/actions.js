@@ -1,6 +1,6 @@
-import { onValue, push } from '@firebase/database';
+import { onValue, push, remove } from '@firebase/database';
 import { v4 as uuidv4 } from 'uuid';
-import { chatsRef, db } from '../../services/firebase';
+import { chatsRef, getChatRefById } from '../../services/firebase';
 
 export const ADD_CHAT = 'CHATS::ADD';
 export const ADD_MESSAGE = 'CHATS::ADD_MESSAGE';
@@ -11,15 +11,15 @@ export const addChat = (id, name) => ({
     id, name
 });
 
-export const addChatWithAddToDb = (chatName) => (dispatch) => {
-    const chat = {        
-        name: chatName,
-        // messages: {
-        //     empty: true
-        // }
+export const addChatToDb = (chatName) => (dispatch) => {    
+    console.log(chatName);
+        const chat = {        
+        name: chatName
     };        
-    push(chatsRef, chat);
-}
+    push(chatsRef, chat);    
+};
+
+
 
 export const addMessage = (chatId, message) => ({
     type: ADD_MESSAGE,
@@ -31,6 +31,12 @@ export const delChat = (chatId) => ({
     type: DEL_CHAT,
     chatId
 });
+
+export const delChatWithDelFromDb = (chatId) => (dispatch) => {        
+    console.log('chatId', chatId);
+    remove( getChatRefById(chatId) );    
+    dispatch( delChat(chatId) );
+};
 
 export const addMessageWithReply = (chatId, message) => (dispatch) => {    
     dispatch(addMessage(chatId, message));
