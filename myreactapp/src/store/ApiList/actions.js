@@ -25,6 +25,10 @@ export const setGistsLoading = (status) => ({
   payload: status,
 });
 
+export const getGistsLoading = () => ({
+  type: GISTS_LOADING  
+});
+
 export const STATUSES = {
     IDLE: 0,
     REQUEST: 1,
