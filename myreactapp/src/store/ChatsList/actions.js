@@ -1,4 +1,4 @@
-import { onValue, set, push, remove } from '@firebase/database';
+import { onValue, set, push, remove, child } from '@firebase/database';
 import { v4 as uuidv4 } from 'uuid';
 import { chatsRef, getChatRefById } from '../../services/firebase';
 
@@ -35,35 +35,40 @@ export const delChatWithDelFromDb = (chatId) => (dispatch) => {
 };
 
 
-export const addMessageToDb = (chatId, message) => (dispatch) => {
-    if( !getChatRefById(chatId).hasOwnProperty('messages') ){        
+export const addMessageToDb = (chatId, message) => (dispatch, getState) => {
+    
+    let dbChatObj;
+    onValue(getChatRefById(chatId), (snapChat) => {    
+        dbChatObj = snapChat.val()
+    });    
+
+    if( !dbChatObj.hasOwnProperty('messages') ){    
         set(
             getChatRefById(chatId), 
             {            
-                name: getChatRefById(chatId).name,
+                name: getState().chatsList[chatId].name,
                 messages: {
                     [uuidv4()]: message
                 }
             }
         );
-    }    
-    push(getChatRefById(chatId).messages, message);
+    } else {                
+        push( child(getChatRefById(chatId), 'messages'), message );
+    }
+
 };
 
 export const addMessageWithReply = (chatId, message) => (dispatch) => {    
     
-    dispatch( addMessageToDb(chatId, message) );
-
-    dispatch(addMessage(chatId, message));
-    const botName = 'Bot';
-    const newBotMessageText = 'Thank you! Your message is accepted! )';
-    const newBotMessage = {
+    dispatch( addMessageToDb(chatId, message) );    
+        
+    const botMessage = {
         id: uuidv4(),
-        author: botName,
-        text: newBotMessageText
+        author: 'Bot',
+        text: 'Thank you! Your message is accepted! )'
     };
-    const addBotMessage = () => {
-        dispatch(addMessage(chatId, newBotMessage));
+    const addBotMessage = () => {        
+        dispatch( addMessageToDb(chatId, botMessage) );
     }
     setTimeout(addBotMessage, 1500);
 
