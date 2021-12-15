@@ -55,7 +55,9 @@
   "jest": {
     "collectCoverPage": true,
     "errorOnDeprecated": true,
-    "setupFiles": ["./jetstup.js"],
+    "setupFiles": [
+      "./jetstup.js"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 80,
