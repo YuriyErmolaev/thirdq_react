@@ -11,10 +11,12 @@ export const addChat = (id, name) => ({
     id, name
 });
 
-export const addChatWithAddToDb = (id, name) => (dispatch) => {
-    const chat = {
-        id: id,
-        name: name
+export const addChatWithAddToDb = (chatName) => (dispatch) => {
+    const chat = {        
+        name: chatName,
+        messages: {
+            empty: true
+        }
     };        
     push(chatsRef, chat);
 }
@@ -48,6 +50,7 @@ export const addMessageWithReply = (chatId, message) => (dispatch) => {
 
 export const addChatToStoreWithMessages = (id, chat) => (dispatch, getState) => {    
     dispatch( addChat(id, chat.name) );    
+    
     Object.keys(chat.messages).map((msgId, i) => {                
         dispatch( addMessage(
             id, 

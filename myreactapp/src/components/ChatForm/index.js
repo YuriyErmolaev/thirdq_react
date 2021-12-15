@@ -12,8 +12,8 @@ export const ChatForm = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch( addChat( uuidv4(), chatName ) );
-        dispatch( addChatWithAddToDb( uuidv4(), chatName ) );
+        // dispatch( addChat( uuidv4(), chatName ) );
+        dispatch( addChatWithAddToDb( chatName ) );
     }
 
     return (
