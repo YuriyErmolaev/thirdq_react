@@ -14,9 +14,9 @@ export const addChat = (id, name) => ({
 export const addChatWithAddToDb = (chatName) => (dispatch) => {
     const chat = {        
         name: chatName,
-        messages: {
-            empty: true
-        }
+        // messages: {
+        //     empty: true
+        // }
     };        
     push(chatsRef, chat);
 }
@@ -48,16 +48,17 @@ export const addMessageWithReply = (chatId, message) => (dispatch) => {
 
 };
 
-export const addChatToStoreWithMessages = (id, chat) => (dispatch, getState) => {    
+export const addChatToStoreWithMessages = (id, chat) => (dispatch) => {    
     dispatch( addChat(id, chat.name) );    
-    
-    Object.keys(chat.messages).map((msgId, i) => {                
-        dispatch( addMessage(
-            id, 
-            chat.messages[msgId]
-            )
-        );
-    });
+    if( chat.hasOwnProperty('messages') ) {
+        Object.keys(chat.messages).map((msgId, i) => {                
+            dispatch( addMessage(
+                id, 
+                chat.messages[msgId]
+                )
+            );
+        });
+    }
 };
 
 export const getAllChats = () => (dispatch) => {
